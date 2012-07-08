@@ -1,0 +1,9 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhist_cnt =7
+let g:netrw_dirhist_1='/Users/donhuang/Applications/eclipse/Eclipse.app/Contents/MacOS'
+let g:netrw_dirhist_2='/Users/donhuang'
+let g:netrw_dirhist_3='/Users/donhuang/old_settings'
+let g:netrw_dirhist_4='/Users/donhuang'
+let g:netrw_dirhist_5='/Users/donhuang/old_settings'
+let g:netrw_dirhist_6='/Users/donhuang'
+let g:netrw_dirhist_7='/Users/donhuang/settings/vim'

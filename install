@@ -1,0 +1,23 @@
+#!/bin/bash
+
+dir="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+
+if [ `pwd` != "$dir" ]; then
+  echo "This script must be run from its own directory."
+  exit
+fi
+
+olddir=~/old_settings
+files=`ls`
+
+for file in $files; do
+  if [ $file != $(basename "$0") ]; then
+    if [ -f ~/.$file ]; then
+      if [ ! -d $olddir ]; then
+        mkdir $olddir
+      fi
+      mv ~/.$file $olddir
+    fi
+    ln -s $dir/$file ~/.$file
+  fi
+done
