@@ -1,0 +1,11 @@
+[color]
+	ui = auto
+[user]
+	name = Donald Huang
+	email = donhuang@fb.com
+[diff]
+        tool = vimdiff
+[merge]
+        tool = vimdiff
+[credential]
+	helper = osxkeychain
