@@ -16,7 +16,7 @@ for file in $files; do
       if [ ! -d $olddir ]; then
         mkdir $olddir
       fi
-      mv ~/.$file $olddir
+      mv ~/.$file $olddir/$file
     fi
     ln -s $dir/$file ~/.$file
   fi

@@ -3,9 +3,15 @@
 [user]
 	name = Donald Huang
 	email = donhuang@fb.com
+[github]
+        user = donhcd
 [diff]
         tool = vimdiff
 [merge]
         tool = vimdiff
 [credential]
 	helper = osxkeychain
+[core]
+        editor = vim
+[alias]
+        ci = commit

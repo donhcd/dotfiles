@@ -43,6 +43,7 @@ alias sd="svn diff"
 #git 
 alias g='git'
 alias ga="git add"
+alias gap="ga -p"
 alias gpr="git pull --rebase"
 alias gl="git log"
 
@@ -77,7 +78,6 @@ alias gc="git checkout"
 alias gcm="git checkout master"
 alias gcb="git checkout -b"
 
-alias gcp="git commit -p"
 alias gca="git commit -a"
 alias gcam="git commit -a -m"
 alias gcaa="git commit -a --amend"

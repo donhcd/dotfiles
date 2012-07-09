@@ -30,6 +30,7 @@ let g:pyflakes_use_quickfix = 0
 let vimclojure#HighlightBuiltins=1
 let vimclojure#ParenRainbow=1 
 let g:Tex_DefaultTargetFormat = "pdf"
+au BufNewFile,BufRead *.html,*.js set textwidth=0
 au BufNewFile,BufRead *.S set filetype=ia64
 set wmh=0
 set wmw=0
@@ -60,11 +61,22 @@ nmap t% :tabedit %<CR>
 nmap td :tabclose<CR>
 
 set clipboard=unnamed
+"
+"ctags stuff
+nmap ,t :!(cd %:p:h;ctags *.[ch])&
+set tags=./tags,tags,~/project/tags
+let Tlist_Ctags_Cmd = "/usr/bin/ctags"
+let Tlist_WinWidth = 50
+map <F4> :TlistToggle
 
 helptags ~/.vim/doc
 
 nmap ,t :!(cd %:p:h;ctags *.[ch])&
 "set tags=./tags,tags
+
+set ls=2                    " Always show status bar
+set ruler                   " Always show cursor position
+
 ",~/project/tags
 "set tags=./tags,./../tags,./../../tags,./../../../tags,tags
 
@@ -100,3 +112,4 @@ autocmd FileType c,cabal,cpp,haskell,javascript,php,python,readme,text,make
   \ autocmd BufWritePre <buffer>
   \ :call <SID>StripTrailingWhitespaces()
 
+call pathogen#infect()
