@@ -23,7 +23,7 @@ alias scr="screen -d -r"
 alias f='find . -name'
 
 # screensaver!
-alias ss='/System/Library/Frameworks/ScreenSaver.framework/Resources/ScreenSaverEngine.app/Contents/MacOS/ScreenSaverEngine'
+alias ss='/System/Library/Frameworks/ScreenSaver.framework/Resources/ScreenSaverEngine.app/Contents/MacOS/ScreenSaverEngine > /dev/null'
 
 #. ~/.bash/tags-completion.bash
 alias vt='vim -t' # useful alias
@@ -46,6 +46,8 @@ alias ga="git add"
 alias gap="ga -p"
 alias gpr="git pull --rebase"
 alias gl="git log"
+alias grc='git rebase --continue'
+alias gra='git rebase --abort'
 
 alias gd="git diff"
 alias gdh="gd HEAD"
@@ -78,13 +80,23 @@ alias gc="git checkout"
 alias gcm="git checkout master"
 alias gcb="git checkout -b"
 
+alias gci="git commit -i"
 alias gca="git commit -a"
 alias gcam="git commit -a -m"
 alias gcaa="git commit -a --amend"
 alias gcamw="git commit -a -m working"
 
 alias gms="git merge --squash"
-alias grh="git reset HEAD"
+alias grh="git reset --hard"
 alias grhh="git reset --hard HEAD"
 alias gsf="git svn fetch; git svn rebase; arc build"
 alias glm="git log --author=$USER"
+
+# Added via '/Users/donhuang/android-scripts/Installers/Install Android SDK.command' at Mon Jul  9 11:02:59 PDT 2012
+export ANDROID_SDK_HOME='/Users/donhuang/local/Android/android-sdk-macosx'
+export PATH="$ANDROID_SDK_HOME/tools:$PATH"
+export PATH="$ANDROID_SDK_HOME/platform-tools:$PATH"
+# Mon Jul  9 11:02:59 PDT 2012
+
+export NDK_MODULE_PATH='/Users/donhuang/local/Android/android-ndk-r8'
+export PATH="$NDK_MODULE_PATH:$PATH"

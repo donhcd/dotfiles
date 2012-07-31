@@ -5,6 +5,10 @@ if [ -f /etc/bashrc ]; then
         . /etc/bashrc
 fi
 
+if [ -f /Users/donhuang/devtools/arcanist/resources/shell/bash-completion ]; then
+        . /Users/donhuang/devtools/arcanist/resources/shell/bash-completion
+fi
+
 if [ ! -z "$PS1" ]; then
   # ^p check for partial match in history
   bind -m vi-insert "\C-p":dynamic-complete-history
@@ -14,6 +18,11 @@ if [ ! -z "$PS1" ]; then
   bind -m vi-insert "\C-l":clear-screen
   set -o vi
 fi
+
+. ~/.git-completion.sh
+
+export AWS_CREDENTIAL_FILE=~/local/aws_access_credentials.key
+export ELASTICBEANSTALK_URL=elasticbeanstalk.us-west-2.amazonaws.com
 
 export SVN_EDITOR=vim
 export EDITOR=vim
