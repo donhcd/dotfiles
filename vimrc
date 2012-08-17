@@ -112,7 +112,7 @@ autocmd FileType c,cabal,cpp,haskell,javascript,php,python,readme,text,make
   \ autocmd BufWritePre <buffer>
   \ :call <SID>StripTrailingWhitespaces()
 
-" call pathogen#infect()
+call pathogen#infect()
 
 "HIGHLIGHT POTENTIALLY UNWANTED WHITESPACE
 highlight BadWhitespace term=standout ctermbg=red guibg=red
