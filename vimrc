@@ -28,7 +28,7 @@ let g:netrw_fastbrowse=2
 let g:netrw_keepdir=0
 let g:pyflakes_use_quickfix = 0
 let vimclojure#HighlightBuiltins=1
-let vimclojure#ParenRainbow=1 
+let vimclojure#ParenRainbow=1
 let g:Tex_DefaultTargetFormat = "pdf"
 au BufNewFile,BufRead *.html,*.js set textwidth=0
 au BufNewFile,BufRead *.S set filetype=ia64
@@ -49,7 +49,7 @@ let g:tex_flavor='latex'
 
 autocmd FileType tex nmap <F5> :!pdflatex %:p -output-directory=%:p:h<cr>
 "map <C-J> <C-W>j<C-W>_
-"map <C-K> <C-W>k<C-W>_ 
+"map <C-K> <C-W>k<C-W>_
 map Y y$
 map <C-H> gT
 map <C-L> gt
@@ -85,18 +85,18 @@ set ruler                   " Always show cursor position
 " map <F4> :TlistToggle
 " if has('cscope')
 "   set cscopetag cscopeverbose
-" 
+"
 "   if has('quickfix')
 "     set cscopequickfix=s-,c-,d-,i-,t-,e-
 "   endif
-" 
+"
 "   cnoreabbrev csa cs add
 "   cnoreabbrev csf cs find
 "   cnoreabbrev csk cs kill
 "   cnoreabbrev csr cs reset
 "   cnoreabbrev css cs show
 "   cnoreabbrev csh cs help
-" 
+"
 "   command -nargs=0 Cscope cs add $VIMSRC/src/cscope.out $VIMSRC/src
 " endif
 
@@ -113,3 +113,7 @@ autocmd FileType c,cabal,cpp,haskell,javascript,php,python,readme,text,make
   \ :call <SID>StripTrailingWhitespaces()
 
 " call pathogen#infect()
+
+"HIGHLIGHT POTENTIALLY UNWANTED WHITESPACE
+highlight BadWhitespace term=standout ctermbg=red guibg=red
+match BadWhitespace /[^* \t]\zs\s\+$\| \+\ze\t/
