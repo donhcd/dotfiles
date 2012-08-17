@@ -12,12 +12,14 @@ files=`ls`
 
 for file in $files; do
   if [ $file != $(basename "$0") ]; then
-    if [ -f ~/.$file ]; then
+    if [ -d ~/.$file ] || [ -f ~/.$file ]; then
       if [ ! -d $olddir ]; then
         mkdir $olddir
       fi
+      echo "mv ~/.$file $olddir/$file"
       mv ~/.$file $olddir/$file
     fi
+    echo "ln -s $dir/$file ~/.$file"
     ln -s $dir/$file ~/.$file
   fi
 done
