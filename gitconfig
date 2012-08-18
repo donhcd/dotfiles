@@ -1,17 +1,23 @@
 [color]
-	ui = auto
+        ui = auto
 [user]
-	name = Donald Huang
-	email = donhuang@fb.com
+        name = Donald Huang
+        email = don.hcd@gmail.com
 [github]
         user = donhcd
 [diff]
         tool = vimdiff
+        renames = copies
 [merge]
         tool = vimdiff
 [credential]
-	helper = osxkeychain
+        helper = osxkeychain
 [core]
         editor = vim
+        whitespace = trailing-space,space-before-tab
+[apply]
+        whitespace = fix
 [alias]
         ci = commit
+[rerere]
+        enabled = true

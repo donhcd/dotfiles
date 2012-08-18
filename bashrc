@@ -20,6 +20,7 @@ if [ ! -z "$PS1" ]; then
 fi
 
 . ~/.git-completion.sh
+. ~/.django_bash_completion
 
 export AWS_CREDENTIAL_FILE=~/local/aws_access_credentials.key
 export ELASTICBEANSTALK_URL=elasticbeanstalk.us-west-2.amazonaws.com

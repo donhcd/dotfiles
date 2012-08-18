@@ -40,9 +40,11 @@ alias st="svn stat"
 alias stq="svn stat -q"
 alias sd="svn diff"
 
-#git 
+#git
 alias g='git'
+complete -o default -o nospace -F _git g
 alias ga="git add"
+complete -o default -o nospace -F _git_add ga
 alias gap="ga -p"
 alias gpr="git pull --rebase"
 alias gl="git log"
@@ -77,6 +79,7 @@ alias gdt='g difftool'
 alias gb="git branch"
 alias gbd='gb -D'
 alias gc="git checkout"
+complete -o default -o nospace -F _git_checkout gc
 alias gcm="git checkout master"
 alias gcb="git checkout -b"
 
