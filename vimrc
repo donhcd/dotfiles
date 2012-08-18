@@ -106,14 +106,9 @@ fun! <SID>StripTrailingWhitespaces()
     %s/\s\+$//e
     call cursor(l, c)
 endfun
- 
+
 " kill any trailing whitespace on save
-autocmd FileType c,cabal,cpp,haskell,javascript,php,python,readme,text,make
-  \ autocmd BufWritePre <buffer>
+autocmd BufWritePre <buffer>
   \ :call <SID>StripTrailingWhitespaces()
 
 call pathogen#infect()
-
-"HIGHLIGHT POTENTIALLY UNWANTED WHITESPACE
-highlight BadWhitespace term=standout ctermbg=red guibg=red
-match BadWhitespace /[^* \t]\zs\s\+$\| \+\ze\t/
