@@ -18,6 +18,8 @@ alias po="popd"
 export EDITOR=vim
 export LS_COLORS="${LS_COLORS}:di=01;33"
 
+alias djvim='PYTHONPATH=`pwd` DJANGO_SETTINGS_MODULE=`python -c "import os; print os.path.basename(os.getcwd())"`.settings vim'
+
 # unix session
 alias scr="screen -d -r"
 alias f='find . -name'
