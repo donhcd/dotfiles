@@ -65,8 +65,9 @@ set clipboard=unnamed
 "ctags stuff
 nmap ,t :!(cd %:p:h;ctags *.[ch])&
 set tags=./tags,tags,~/project/tags
-let Tlist_Ctags_Cmd = "/usr/bin/ctags"
-let Tlist_WinWidth = 50
+let Tlist_Ctags_Cmd = "/opt/local/bin/ctags"
+let Tlist_Inc_Winwidth = 0
+"let Tlist_WinWidth = 50
 map <F4> :TlistToggle
 
 helptags ~/.vim/doc
