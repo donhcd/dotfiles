@@ -22,6 +22,7 @@ syntax on
 filetype on
 au BufNewFile,BufRead *.c0,*.h0 set filetype=c
 filetype plugin on           " plugins are enabled
+filetype indent on           " indentation is enabled
 set ofu=syntaxcomplete#Complete
 let g:netrw_list_hide='^\..*'
 let g:netrw_fastbrowse=2

@@ -1,6 +1,6 @@
 map <F5> :!python %:p<CR>
-set smartindent cinwords=if,elif,else,for,while,try,except,finally,def,class
-set tabstop=4
-set shiftwidth=4
-set softtabstop=4
-set omnifunc=pythoncomplete#Complete
+setlocal smartindent cinwords=if,elif,else,for,while,try,except,finally,def,class
+setlocal tabstop=4
+setlocal shiftwidth=4
+setlocal softtabstop=4
+setlocal omnifunc=pythoncomplete#Complete
