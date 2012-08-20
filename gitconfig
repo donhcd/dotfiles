@@ -15,6 +15,7 @@
 [core]
         editor = vim
         whitespace = trailing-space,space-before-tab
+	excludesfile = ~/.cvsignore
 [apply]
         whitespace = fix
 [alias]
