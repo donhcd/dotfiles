@@ -21,6 +21,8 @@
 [alias]
         ci = commit
         co = checkout
+        bd = branch -d
+        bD = branch -D
         a = add
         ap = add --patch
 [rerere]
