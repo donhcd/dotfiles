@@ -44,3 +44,5 @@ LSCOLORS=DxGxcxdxCxcgcdabagacad
 export CLICOLOR LSCOLORS
 
 ulimit -n 1024
+
+PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
