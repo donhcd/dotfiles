@@ -103,3 +103,4 @@ export PATH="$ANDROID_SDK_HOME/platform-tools:$PATH"
 
 export NDK_MODULE_PATH='/Users/donhuang/local/Android/android-ndk-r8'
 export PATH="$NDK_MODULE_PATH:$PATH"
+export PATH="$HOME/.local/bin:$PATH"
