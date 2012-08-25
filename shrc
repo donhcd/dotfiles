@@ -87,6 +87,8 @@ alias grhh="git reset --hard HEAD"
 alias gsf="git svn fetch; git svn rebase; arc build"
 alias glm="git log --author=$USER"
 
+export PATH=$HOME/local/bin:/Users/donhuang/devtools/arcanist/bin:/opt/local/bin:/opt/local/sbin:/Applications/XAMPP/xamppfiles/bin:/usr/local/bin:/usr/local/go/bin/:$PATH
+
 # Added via '/Users/donhuang/android-scripts/Installers/Install Android SDK.command' at Mon Jul  9 11:02:59 PDT 2012
 export ANDROID_SDK_HOME='/Users/donhuang/local/Android/android-sdk-macosx'
 export PATH="$ANDROID_SDK_HOME/tools:$PATH"

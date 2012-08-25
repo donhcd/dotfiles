@@ -9,7 +9,7 @@ if [ -f /Users/donhuang/devtools/arcanist/resources/shell/bash-completion ]; the
         . /Users/donhuang/devtools/arcanist/resources/shell/bash-completion
 fi
 
-[ -f ~/.shrc ] && . shrc
+[ -f ~/.shrc ] && . ~/.shrc
 
 if [ ! -z "$PS1" ]; then
   # ^p check for partial match in history
@@ -42,6 +42,5 @@ export PS1="\[\e[1;32m\][\u@\h\[\e[m\] \[\e[1;34m\]\W\$(git branch 2> /dev/null 
 CLICOLOR=1
 LSCOLORS=DxGxcxdxCxcgcdabagacad
 export CLICOLOR LSCOLORS
-export PATH=$HOME/local/bin:/Users/donhuang/devtools/arcanist/bin:/opt/local/bin:/opt/local/sbin:/Applications/XAMPP/xamppfiles/bin:/usr/local/bin:/usr/local/go/bin/:$PATH
 
 ulimit -n 1024
