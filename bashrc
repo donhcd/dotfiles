@@ -9,7 +9,7 @@ if [ -f /Users/donhuang/devtools/arcanist/resources/shell/bash-completion ]; the
         . /Users/donhuang/devtools/arcanist/resources/shell/bash-completion
 fi
 
-[-f ~/.shrc] && . shrc
+[ -f ~/.shrc ] && . shrc
 
 if [ ! -z "$PS1" ]; then
   # ^p check for partial match in history
@@ -30,14 +30,14 @@ export ELASTICBEANSTALK_URL=elasticbeanstalk.us-west-2.amazonaws.com
 export SVN_EDITOR=vim
 export EDITOR=vim
 
-# create TAGS 
+# create TAGS
 alias tagall='rm TAGS; find . -name "*.php" -o -name "*.phpt" -o -name "*.c" -o -name "*.cpp" -o -name "*.c++"  -o -name "*.h" -o -name "*.hpp" -o -name "*.py" -o -name "*.pl" -o -name "*.pm" -o -name "*.java" -o -name "*.thrift" | ctags -L -'
 alias tagcpp='rm TAGS; find . -name "*.c" -o -name "*.cpp" -o -name "*.h" -o -name "*.hpp" | ctags -L -'
- 
+
 # create cscope index
 alias csgen='find . -type f -name "*.php" -o -name "*.phpt" -o -name "*.c" -o -name "*.cpp" -o -name "*.h" -o -name "*.hpp" -o -name "*.c++" -o -name "*.py" -o -name "*.pl" -o -name "*.pm" -o -name "*.java" -o -name "*.thrift" > cscope.files; rm cscope.in.out cscope.out cscope.po.out ; cscope -bq'
 
-export PS1="\[\e[1;32m\][\u@\h\[\e[m\] \[\e[1;34m\]\W\$(git branch 2> /dev/null | grep -e '\* ' | sed 's/^..\(.*\)/{\[\e[1;33m\]\1\[\e[1;34m\]}\[\e[m\]/')\[\e[1;32m\]]\$\[\e[0m\] " 
+export PS1="\[\e[1;32m\][\u@\h\[\e[m\] \[\e[1;34m\]\W\$(git branch 2> /dev/null | grep -e '\* ' | sed 's/^..\(.*\)/{\[\e[1;33m\]\1\[\e[1;34m\]}\[\e[m\]/')\[\e[1;32m\]]\$\[\e[0m\] "
 
 CLICOLOR=1
 LSCOLORS=DxGxcxdxCxcgcdabagacad
