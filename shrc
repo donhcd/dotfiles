@@ -1,6 +1,5 @@
 # ~/.shrc
-#
-# Get the aliases and functions from .bashrc
+# This is sourced by ~/.zshrc and ~/.bashrc
 
 # unix nav
 alias ..='cd ..'

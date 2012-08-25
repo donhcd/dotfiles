@@ -264,7 +264,7 @@ zstyle ':mime:*' mailcap ~/.mailcap
 # }}}1
 # Keybindings {{{1
 
-bindkey -e
+bindkey -v
 bindkey -r '^Q'
 
 bindkey -M viins '^A' beginning-of-line
@@ -345,5 +345,10 @@ for binding in ${(f)$(bindkey -M emacs|grep '^"\^X')}; do
   bindkey -M viins "${(@Qz)binding}"
 done
 unset binding
+
+bindkey -M viins '^?' backward-delete-char
+bindkey -M viins '^W' backward-delete-word
+bindkey -M viins '^U' backward-kill-line
+bindkey -M vicmd '^R' history-incremental-search-backward
 
 # }}}1
