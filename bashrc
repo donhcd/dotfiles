@@ -9,6 +9,8 @@ if [ -f /Users/donhuang/devtools/arcanist/resources/shell/bash-completion ]; the
         . /Users/donhuang/devtools/arcanist/resources/shell/bash-completion
 fi
 
+[-f ~/.shrc] && . shrc
+
 if [ ! -z "$PS1" ]; then
   # ^p check for partial match in history
   bind -m vi-insert "\C-p":dynamic-complete-history
