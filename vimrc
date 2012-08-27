@@ -66,7 +66,8 @@ set clipboard=unnamed
 "ctags stuff
 nmap ,t :!(cd %:p:h;ctags *.[ch])&
 set tags=./tags,tags,~/project/tags
-let Tlist_Ctags_Cmd = "/opt/local/bin/ctags"
+let Tlist_Ctags_Cmd = system('which ctags')
+let Tlist_Ctags_Cmd = strpart(Tlist_Ctags_Cmd, 0, strlen(Tlist_Ctags_Cmd)-1)
 let Tlist_Inc_Winwidth = 0
 "let Tlist_WinWidth = 50
 map <F4> :TlistToggle
