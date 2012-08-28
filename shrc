@@ -87,7 +87,8 @@ alias grhh="git reset --hard HEAD"
 alias gsf="git svn fetch; git svn rebase; arc build"
 alias glm="git log --author=$USER"
 
-alias coursedir='aklog cs.cmu.edu && cd /afs/cs/academic/class/15213-f12/private'
+aklog cs.cmu.edu&
+alias coursedir='cd /afs/cs/academic/class/15213-f12/private'
 
 export PATH=$HOME/local/bin:/Users/donhuang/devtools/arcanist/bin:/opt/local/bin:/opt/local/sbin:/Applications/XAMPP/xamppfiles/bin:/usr/local/bin:/usr/local/go/bin/:$PATH
 
