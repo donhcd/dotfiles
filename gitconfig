@@ -15,7 +15,7 @@
 [core]
         editor = vim
         whitespace = trailing-space,space-before-tab
-        excludesfile = ~/.cvsignore
+	excludesfile = ~/.gitignore
 [apply]
         whitespace = fix
 [alias]
