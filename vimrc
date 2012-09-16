@@ -116,6 +116,8 @@ autocmd BufWritePre <buffer>
 
 call pathogen#infect()
 
+let g:ctrlp_map='\t'
+
 " django stuff
 let s:selectregexs={
   \'htmljinja':  '\{\%\s*(extends|block|macro|set|if|for|include|trans)>',
