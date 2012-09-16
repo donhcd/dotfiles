@@ -18,7 +18,7 @@ alias scr="screen -d -r"
 alias f='find . -name'
 
 # screensaver!
-alias ss='/System/Library/Frameworks/ScreenSaver.framework/Resources/ScreenSaverEngine.app/Contents/MacOS/ScreenSaverEngine > /dev/null'
+alias ss='/System/Library/Frameworks/ScreenSaver.framework/Resources/ScreenSaverEngine.app/Contents/MacOS/ScreenSaverEngine > /dev/null 2>&1'
 
 #. ~/.bash/tags-completion.bash
 alias vt='vim -t' # useful alias
