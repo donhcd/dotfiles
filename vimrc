@@ -49,6 +49,7 @@ set grepprg=grep\ -nH\ $*
 let g:tex_flavor='latex'
 
 autocmd FileType tex nmap <F5> :!pdflatex %:p -output-directory=%:p:h<cr>
+nm <leader>nt :tabnew<CR>
 "map <C-J> <C-W>j<C-W>_
 "map <C-K> <C-W>k<C-W>_
 map Y y$
@@ -116,7 +117,7 @@ autocmd BufWritePre <buffer>
 
 call pathogen#infect()
 
-let g:ctrlp_map='\t'
+let g:ctrlp_map='<leader>t'
 
 " django stuff
 let s:selectregexs={
