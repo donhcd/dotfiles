@@ -139,7 +139,11 @@ setopt noclobber nonomatch
 setopt completeinword extendedglob
 setopt autocd
 
-HISTSIZE=100
+HISTSIZE=1000
+SAVEHIST=1000
+HISTFILE=~/.history
+setopt inc_append_history
+setopt share_history
 
 if [[ $ZSH_VERSION == 3.<->* ]]; then
   which zmodload >&/dev/null && zmodload zsh/compctl
