@@ -8,7 +8,7 @@ ZSH=$HOME/.oh-my-zsh
 # Look in ~/.oh-my-zsh/themes/
 # Optionally, if you set this to "random", it'll load a random theme each
 # time that oh-my-zsh is loaded.
-ZSH_THEME="robbyrussell"
+ZSH_THEME="terminalparty"
 
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
@@ -32,121 +32,121 @@ unset interactive
 
 e=`echo -ne "\e"`
 
-_git_prompt_info() {
-  case "$PWD" in
-    /net/*|/Volumes/*) return ;;
-  esac
-  if [ -d .svn ]; then
-    ref=.svn
-  else
-    ref=${$(git symbolic-ref HEAD 2> /dev/null)#refs/heads/} || \
-      ref=${$(git rev-parse HEAD 2>/dev/null)[1][1,7]} || \
-      return
-  fi
-  case "$TERM" in
-    screen*) branchcolor=$'\e[38;5;31m'   ;;
-    *)       branchcolor="$fg_bold[blue]" ;;
-  esac
-  case "$ref" in ????????????????????*) ref="${ref[1,17]}..." ;; esac
-  echo "(%{$branchcolor%}${ref}%{$reset_color%})"
-}
+#_git_prompt_info() {
+#  case "$PWD" in
+#    /net/*|/Volumes/*) return ;;
+#  esac
+#  if [ -d .svn ]; then
+#    ref=.svn
+#  else
+#    ref=${$(git symbolic-ref HEAD 2> /dev/null)#refs/heads/} || \
+#      ref=${$(git rev-parse HEAD 2>/dev/null)[1][1,7]} || \
+#      return
+#  fi
+#  case "$TERM" in
+#    screen*) branchcolor=$'\e[38;5;31m'   ;;
+#    *)       branchcolor="$fg_bold[blue]" ;;
+#  esac
+#  case "$ref" in ????????????????????*) ref="${ref[1,17]}..." ;; esac
+#  echo "(%{$branchcolor%}${ref}%{$reset_color%})"
+#}
+#
+#autoload -Uz colors && colors
+#
+#if [ -x "$HOME/bin/tpope" ]; then
+#  hostcolor=`$HOME/bin/tpope hostman -c`
+#else
+#  hostcolor="01;37"
+#fi
+#
+#local usercolor="$fg_bold[yellow]"
+#local dircolor="$fg_bold[blue]"
+#case "$TERM" in
+#  screen*)
+#    usercolor=$'\e[38;5;184m'
+#    dircolor=$'\e[38;5;27m'
+#    ;;
+#  xterm*|rxvt-unicode)
+#    usercolor=$'\e[93m'
+#    dircolor=$'\e[94m'
+#    ;;
+#esac
+#[ $UID = '0' ] && usercolor="$fg_bold[white]"
+#reset_color=$'\e[00m'
+#
+#PROMPT="%{$usercolor%}%n%{${e}[00m%}@%{${e}[${hostcolor}m%}%m%{${e}[00m%}:%{$dircolor%}%30<...<%~%<<%{${e}[00m%}%{${e}[00m%}\$(_git_prompt_info)%# "
+#RPS1="%(?..(%{${e}[01;35m%}%?%{${e}[00m%}%)%<<)"
+#setopt promptsubst
 
-autoload -Uz colors && colors
-
-if [ -x "$HOME/bin/tpope" ]; then
-  hostcolor=`$HOME/bin/tpope hostman -c`
-else
-  hostcolor="01;37"
-fi
-
-local usercolor="$fg_bold[yellow]"
-local dircolor="$fg_bold[blue]"
-case "$TERM" in
-  screen*)
-    usercolor=$'\e[38;5;184m'
-    dircolor=$'\e[38;5;27m'
-    ;;
-  xterm*|rxvt-unicode)
-    usercolor=$'\e[93m'
-    dircolor=$'\e[94m'
-    ;;
-esac
-[ $UID = '0' ] && usercolor="$fg_bold[white]"
-reset_color=$'\e[00m'
-
-PROMPT="%{$usercolor%}%n%{${e}[00m%}@%{${e}[${hostcolor}m%}%m%{${e}[00m%}:%{$dircolor%}%30<...<%~%<<%{${e}[00m%}%{${e}[00m%}\$(_git_prompt_info)%# "
-RPS1="%(?..(%{${e}[01;35m%}%?%{${e}[00m%}%)%<<)"
-setopt promptsubst
-
-case ${OLDTERM:-$TERM} in
-  screen*|vt220*)
-    if [ -x "$HOME/bin/tpope" ]; then
-      hostcode=`$HOME/bin/tpope hostman -s`
-    else
-      hostcode="+b W"
-    fi
-    usercode="+b Y"
-    [ $UID = '0' ] && usercode="+b W"
-
-    screenhs="\005{$usercode}%n\005{-}@\005{$hostcode}%m\005{-}:\005{+b B}%~\005{-}"
-    precmd  () {
-      local tty="`print -P "%l@"|sed -e s,/,-,g`"
-      # print -Pn "\e]1;\a\e]1;$tty%m\a"
-      print -Pn "\e]2;$screenhs [%l]\a"
-      if [ "$STY" ]; then
-        print -Pn "\e]1;\a\e]1;@%m\a"
-        # $tty
-        print -Pn "\ek@\e\\"
-      else
-        print -Pn "\ek@%m\e\\"
-      fi
-    }
-    preexec () {
-      local tty="`print -P "%l@"|sed -e s,/,-,g`"
-      local cmd="$1"
-      case "$cmd" in
-        ???????????*) cmd="${cmd%% *}" ;;
-      esac
-      case "$cmd" in
-        ???????????*) cmd="${cmd%%/*}" ;;
-      esac
-      cmd=$(echo -n "$cmd"|tr '\0-\037%$' '.')
-      # print -Pn "\e]1;\a\e]1;$tty%m*\a"
-      print -Pn "\e]2;$screenhs"
-      print -Pnr " (%24>..>$cmd"
-      print -Pn ") [%l]\a"
-      if [ "$STY" ]; then
-        print -Pn "\ek$cmd@\e\\"
-      else
-        print -Pn "\ek$cmd@%m\e\\"
-      fi
-    }
-    ;;
-
-  xterm*|rxvt*|Eterm*|kterm*|putty*|dtterm*|ansi*|cygwin*)
-    precmd  () {
-      local tty="`print -P "%l@"|sed -e s,/,-,g`"
-      print -Pn "\e]1;$tty%m\a"
-      print -Pn "\e]2;%n@%m:%~ [%l]\a"
-    }
-    preexec () {
-      local tty="`print -P "%l@"|sed -e s,/,-,g`"
-      print -Pn "\e]1;$tty%m*\a"
-      print -Pn "\e]2;%n@%m:%~"
-      print -Pnr " (%24>..>$1"|tr '\0-\037' '.'
-      print -Pn ") [%l]\a"
-    } ;;
-
-  linux) ;;
-
-  *)
-    PS1="$hostletter%# "
-    RPS1="%(?..(%?%)%<<)"
-    ;;
-esac
-
-unset hostcolor hostletter hostcode dircolor usercolor usercode
-unset e
+#case ${OLDTERM:-$TERM} in
+#  screen*|vt220*)
+#    if [ -x "$HOME/bin/tpope" ]; then
+#      hostcode=`$HOME/bin/tpope hostman -s`
+#    else
+#      hostcode="+b W"
+#    fi
+#    usercode="+b Y"
+#    [ $UID = '0' ] && usercode="+b W"
+#
+#    screenhs="\005{$usercode}%n\005{-}@\005{$hostcode}%m\005{-}:\005{+b B}%~\005{-}"
+#    precmd  () {
+#      local tty="`print -P "%l@"|sed -e s,/,-,g`"
+#      # print -Pn "\e]1;\a\e]1;$tty%m\a"
+#      print -Pn "\e]2;$screenhs [%l]\a"
+#      if [ "$STY" ]; then
+#        print -Pn "\e]1;\a\e]1;@%m\a"
+#        # $tty
+#        print -Pn "\ek@\e\\"
+#      else
+#        print -Pn "\ek@%m\e\\"
+#      fi
+#    }
+#    preexec () {
+#      local tty="`print -P "%l@"|sed -e s,/,-,g`"
+#      local cmd="$1"
+#      case "$cmd" in
+#        ???????????*) cmd="${cmd%% *}" ;;
+#      esac
+#      case "$cmd" in
+#        ???????????*) cmd="${cmd%%/*}" ;;
+#      esac
+#      cmd=$(echo -n "$cmd"|tr '\0-\037%$' '.')
+#      # print -Pn "\e]1;\a\e]1;$tty%m*\a"
+#      print -Pn "\e]2;$screenhs"
+#      print -Pnr " (%24>..>$cmd"
+#      print -Pn ") [%l]\a"
+#      if [ "$STY" ]; then
+#        print -Pn "\ek$cmd@\e\\"
+#      else
+#        print -Pn "\ek$cmd@%m\e\\"
+#      fi
+#    }
+#    ;;
+#
+#  xterm*|rxvt*|Eterm*|kterm*|putty*|dtterm*|ansi*|cygwin*)
+#    precmd  () {
+#      local tty="`print -P "%l@"|sed -e s,/,-,g`"
+#      print -Pn "\e]1;$tty%m\a"
+#      print -Pn "\e]2;%n@%m:%~ [%l]\a"
+#    }
+#    preexec () {
+#      local tty="`print -P "%l@"|sed -e s,/,-,g`"
+#      print -Pn "\e]1;$tty%m*\a"
+#      print -Pn "\e]2;%n@%m:%~"
+#      print -Pnr " (%24>..>$1"|tr '\0-\037' '.'
+#      print -Pn ") [%l]\a"
+#    } ;;
+#
+#  linux) ;;
+#
+#  *)
+#    PS1="$hostletter%# "
+#    RPS1="%(?..(%?%)%<<)"
+#    ;;
+#esac
+#
+#unset hostcolor hostletter hostcode dircolor usercolor usercode
+#unset e
 
 # Options {{{1
 
