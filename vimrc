@@ -18,6 +18,8 @@ set showmatch
 set shiftwidth=2
 set vb t_vb=
 set textwidth=80
+set undofile
+set undodir=~/tmp
 syntax on
 filetype on
 au BufNewFile,BufRead *.c0,*.h0 set filetype=c
