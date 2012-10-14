@@ -258,3 +258,6 @@ bindkey -M vicmd '^R' history-incremental-search-backward
 fpath=(/Users/donhuang/local/zsh-completions/src $fpath)
 
 # }}}1
+
+### Added by the Heroku Toolbelt
+export PATH="/usr/local/heroku/bin:$PATH"
