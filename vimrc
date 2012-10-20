@@ -1,5 +1,7 @@
-color xterm16
-" color murphy
+call pathogen#infect()
+
+color solarized
+set background=dark
 
 " Highlight characters after 80
 " set colorcolumn=81,101 " absolute columns to highlight "
@@ -116,8 +118,6 @@ endfun
 " kill any trailing whitespace on save
 autocmd BufWritePre <buffer>
   \ :call <SID>StripTrailingWhitespaces()
-
-call pathogen#infect()
 
 let g:ctrlp_map='<leader>t'
 
