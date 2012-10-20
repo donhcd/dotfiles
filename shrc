@@ -1,6 +1,8 @@
 # ~/.shrc
 # This is sourced by ~/.zshrc and ~/.bashrc
 
+export TERM=xterm-256color
+
 # unix nav
 alias ..='cd ..'
 alias ...='cd ../..'
