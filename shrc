@@ -102,3 +102,4 @@ export PATH="$NDK_MODULE_PATH:$PATH"
 export PATH="$HOME/.local/bin:$PATH"
 export PATH="$HOME/Library/Haskell/bin:$PATH"
 
+PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
