@@ -9,7 +9,7 @@ if [ `pwd` != "$dir" ]; then
   exit
 fi
 
-olddir=~/old_settings
+olddir=~/old_dotfiles
 files=`ls`
 
 for file in $files; do
