@@ -146,3 +146,8 @@ autocmd BufNewFile,BufRead *.html,*.htm let &filetype=<SID>SelectHTML()
 let g:syntastic_mode_map={ 'mode': 'active',
       \ 'active_filetypes': [],
       \ 'passive_filetypes': ['html'] }
+
+" enable powerline vim plugin
+source ~/dotfiles/powerline/powerline/ext/vim/powerline.vim
+python from powerline.ext.vim import source_plugin; source_plugin()
+
