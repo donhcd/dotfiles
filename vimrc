@@ -151,3 +151,6 @@ let g:syntastic_mode_map={ 'mode': 'active',
 source ~/dotfiles/powerline/powerline/ext/vim/powerline.vim
 python from powerline.ext.vim import source_plugin; source_plugin()
 
+" for crontab -e
+au BufEnter /private/tmp/crontab.* setl backupcopy=yes
+
