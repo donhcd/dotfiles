@@ -9,20 +9,21 @@ if [ `pwd` != "$dir" ]; then
   exit
 fi
 
-olddir=~/old_dotfiles
+dirdir=`dirname $dir`
+olddir=$dirdir/old_dotfiles
 files=`ls`
 
 for file in $files; do
   if [ $file != $(basename "$0") ]; then
-    if [ -d ~/.$file ] || [ -f ~/.$file ]; then
+    if [ -d $dirdir/.$file ] || [ -f $dirdir/.$file ]; then
       if [ ! -d $olddir ]; then
         mkdir $olddir
       fi
-      echo "mv ~/.$file $olddir/$file"
-      mv ~/.$file $olddir/$file
+      echo "mv $dirdir/.$file $olddir/$file"
+      mv $dirdir/.$file $olddir/$file
     fi
-    echo "ln -s $dir/$file ~/.$file"
-    ln -s $dir/$file ~/.$file
+    echo "ln -s $dir/$file $dirdir/.$file"
+    ln -s $dir/$file $dirdir/.$file
   fi
 done
 
