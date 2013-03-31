@@ -148,8 +148,8 @@ let g:syntastic_mode_map={ 'mode': 'active',
       \ 'passive_filetypes': ['html'] }
 
 " enable powerline vim plugin
-source ~/dotfiles/powerline/powerline/ext/vim/powerline.vim
-python from powerline.ext.vim import source_plugin; source_plugin()
+"source ~/dotfiles/powerline/powerline/ext/vim/powerline.vim
+"python from powerline.ext.vim import source_plugin; source_plugin()
 
 " for crontab -e
 au BufEnter /private/tmp/crontab.* setl backupcopy=yes
