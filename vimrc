@@ -1,4 +1,5 @@
 call pathogen#infect()
+" possible tips: http://statico.github.com/vim.html
 
 color solarized
 set background=dark
@@ -56,6 +57,17 @@ autocmd FileType tex nmap <F5> :!pdflatex %:p -output-directory=%:p:h<cr>
 nm <leader>nt :tabnew<CR>
 "map <C-J> <C-W>j<C-W>_
 "map <C-K> <C-W>k<C-W>_
+nm \l :setlocal number!<CR>
+nm \o :set paste!<CR>
+"cnoremap <C-a> <Home>
+"cnoremap <C-b> <Left>
+"cnoremap <C-f>  <Right>
+"cnoremap <C-d>  <Delete>
+"cnoremap <M-b>  <S-Left>
+"cnoremap <M-f>  <S-Right>
+"cnoremap <M-d>  <S-right><Delete>
+"cnoremap <C-g>  <C-c>
+
 map Y y$
 map <C-H> gT
 map <C-L> gt

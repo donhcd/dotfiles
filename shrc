@@ -9,6 +9,14 @@ alias ...='cd ../..'
 alias ls="ls -G"
 alias ll="ls -l"
 alias la='ls -al'
+alias sl='/usr/local/bin/sl'
+alias sll='while 1;do;/usr/local/bin/sl;done'
+
+alias sml='rlwrap sml'
+
+alias pgstart='pg_ctl -D /usr/local/var/postgres -l /usr/local/var/postgres/server.log start'
+alias pgs='pgstart'
+alias pgstop='pg_ctl -D /usr/local/var/postgres -l /usr/local/var/postgres/server.log stop'
 
 export EDITOR=vim
 export LS_COLORS="${LS_COLORS}:di=01;33"
@@ -90,6 +98,8 @@ alias gsf="git svn fetch; git svn rebase; arc build"
 alias glm="git log --author=$USER"
 
 export PATH=$HOME/local/bin:/Users/donhuang/devtools/arcanist/bin:/opt/local/bin:/opt/local/sbin:/Applications/XAMPP/xamppfiles/bin:/usr/local/bin:/usr/local/go/bin/:$PATH
+export PATH="/usr/local/opt/coreutils/libexec/gnubin:$PATH"
+export MANPATH="/usr/local/opt/coreutils/libexec/gnuman:$MANPATH"
 
 # Added via '/Users/donhuang/android-scripts/Installers/Install Android SDK.command' at Mon Jul  9 11:02:59 PDT 2012
 export ANDROID_SDK_HOME='/Users/donhuang/local/Android/android-sdk-macosx'
@@ -103,3 +113,12 @@ export PATH="$HOME/.local/bin:$PATH"
 export PATH="$HOME/Library/Haskell/bin:$PATH"
 
 PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
+
+echo -e "$(fortune -e -s | fmt -80 -s | cowsay -$(shuf -n 1 -e b d g p s t w y) -f $(shuf -n 1 -e $(cowsay -l | tail -n +2)) -n)\n"
+
+# hackprinceton stuff
+export PYTHONPATH=/usr/local/lib/python2.7/site-packages:$PYTHONPATH
+export PYTHONPATH=$PYTHONPATH:/Users/donhuang/Dropbox/Documents/projects/hackprinceton13/aubio/python/build/lib.macosx-10.8-intel-2.7:/Users/donhuang/Dropbox/Documents/projects/hackprinceton13/aubio/python/tests
+export LD_LIBRARY_PATH=$HOME/Documents/projects/hackprinceton13/aubio/build/src
+export DYLD_LIBRARY_PATH=$HOME/Documents/projects/hackprinceton13/aubio/build/src
+export PATH=$PATH:~/bin

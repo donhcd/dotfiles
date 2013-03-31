@@ -170,7 +170,7 @@ zstyle ':mime:*' mailcap ~/.mailcap
 # }}}1
 # Keybindings {{{1
 
-bindkey -v
+#bindkey -v
 bindkey -r '^Q'
 
 bindkey -M viins '^A' beginning-of-line

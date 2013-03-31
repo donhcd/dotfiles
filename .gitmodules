@@ -46,3 +46,18 @@
 [submodule "powerline"]
 	path = powerline
 	url = git://github.com/Lokaltog/powerline.git
+[submodule "vim/bundle/vim-css-color"]
+	path = vim/bundle/vim-css-color
+	url = git://github.com/skammer/vim-css-color.git
+[submodule "closetag.vim"]
+	path = closetag.vim
+	url = git://github.com/vim-scripts/closetag.vim.git
+[submodule "vim/bundle/vim-commentary"]
+	path = vim/bundle/vim-commentary
+	url = git://github.com/tpope/vim-commentary.git
+[submodule "vim/bundle/closetag.vim"]
+	path = vim/bundle/closetag.vim
+	url = git://github.com/vim-scripts/closetag.vim.git
+[submodule "vim/bundle/vim-coffee-script"]
+	path = vim/bundle/vim-coffee-script
+	url = git://github.com/kchmck/vim-coffee-script.git
