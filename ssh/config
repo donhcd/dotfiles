@@ -1,0 +1,13 @@
+Host unix
+        HostName unix.andrew.cmu.edu
+Host shark
+        HostName shark.ics.cs.cmu.edu
+Host bitbucket.org
+        IdentityFile ~/.ssh/id_rsa
+Host linode
+        User donaldh
+        HostName 50.116.54.133
+        IdentityFile ~/.ssh/donkey.pem
+        Port 476
+Host *
+        User donaldh
