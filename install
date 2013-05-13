@@ -9,6 +9,9 @@ if [ `pwd` != "$dir" ]; then
   exit
 fi
 
+mkdir -p ./vim/bundle
+git clone https://github.com/gmarik/vundle.git ./vim/bundle/vundle
+
 dirdir=`dirname $dir`
 olddir=$dirdir/old_dotfiles
 files=`ls`

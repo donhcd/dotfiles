@@ -1,6 +1,33 @@
-call pathogen#infect()
+set nocp
+filetype off
+set rtp+=~/.vim/bundle/vundle/
+call vundle#rc()
+Bundle 'gmarik/vundle'
+" Bundle!
+Bundle 'tpope/vim-fugitive'
+Bundle 'scrooloose/syntastic'
+Bundle 'tpope/vim-repeat'
+Bundle 'tpope/vim-surround'
+" Bundle 'msanders/snipmate.vim'
+Bundle 'gerw/vim-latex-suite'
+Bundle 'vim-scripts/taglist.vim'
+Bundle 'kien/ctrlp.vim'
+Bundle 'walm/jshint.vim'
+Bundle 'altercation/vim-colors-solarized'
+Bundle 'tsaleh/vim-matchit'
+Bundle 'pangloss/vim-javascript'
+Bundle 'tpope/vim-rails'
+Bundle 'vim-scripts/vimwiki'
+Bundle 'skammer/vim-css-color'
+Bundle 'vim-scripts/closetag.vim'
+Bundle 'tpope/vim-commentary'
+Bundle 'vim-scripts/closetag.vim'
+Bundle 'kchmck/vim-coffee-script'
+
+" call pathogen#infect()
 " possible tips: http://statico.github.com/vim.html
 
+filetype plugin indent on
 color solarized
 set background=dark
 
@@ -14,7 +41,7 @@ hi link tab Error
 
 set backspace=indent,eol,start
 set virtualedit=all
-set nocp autoindent smartindent number incsearch
+set autoindent smartindent number incsearch
 set isfname-==
 set expandtab
 set showmatch
@@ -26,6 +53,7 @@ set undodir=~/.vimundos
 syntax on
 filetype on
 au BufNewFile,BufRead *.c0,*.h0 set filetype=c
+au BufNewFile,BufRead *.cm,*.sig,*.lex set filetype=sml
 filetype plugin on           " plugins are enabled
 filetype indent on           " indentation is enabled
 set ofu=syntaxcomplete#Complete
@@ -128,8 +156,10 @@ fun! <SID>StripTrailingWhitespaces()
 endfun
 
 " kill any trailing whitespace on save
-autocmd BufWritePre <buffer>
-  \ :call <SID>StripTrailingWhitespaces()
+"autocmd BufWritePre <buffer>
+"  \ :call <SID>StripTrailingWhitespaces()
+
+autocmd FileType c,cpp,java,php,sml,tex autocmd BufWritePre <buffer> :%s/\s\+$//e
 
 let g:ctrlp_map='<leader>t'
 
