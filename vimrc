@@ -18,10 +18,8 @@ Bundle 'tsaleh/vim-matchit'
 Bundle 'pangloss/vim-javascript'
 Bundle 'tpope/vim-rails'
 Bundle 'vim-scripts/vimwiki'
-Bundle 'skammer/vim-css-color'
 Bundle 'vim-scripts/closetag.vim'
 Bundle 'tpope/vim-commentary'
-Bundle 'vim-scripts/closetag.vim'
 Bundle 'kchmck/vim-coffee-script'
 
 " call pathogen#infect()
@@ -196,3 +194,4 @@ let g:syntastic_mode_map={ 'mode': 'active',
 " for crontab -e
 au BufEnter /private/tmp/crontab.* setl backupcopy=yes
 
+highlight ExtraWhitespace ctermbg=red guibg=red
