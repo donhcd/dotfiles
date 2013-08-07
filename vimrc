@@ -8,6 +8,10 @@ Bundle 'tpope/vim-fugitive'
 Bundle 'scrooloose/syntastic'
 Bundle 'tpope/vim-repeat'
 Bundle 'tpope/vim-surround'
+Bundle 'tpope/vim-unimpaired'
+Bundle 'tpope/vim-endwise'
+Bundle 'Shougo/neocomplcache'
+" Bundle 'mileszs/ack'
 " Bundle 'msanders/snipmate.vim'
 Bundle 'gerw/vim-latex-suite'
 Bundle 'vim-scripts/taglist.vim'
@@ -25,6 +29,7 @@ Bundle 'kchmck/vim-coffee-script'
 " call pathogen#infect()
 " possible tips: http://statico.github.com/vim.html
 
+let g:neocomplcache_enable_at_startup = 1
 filetype plugin indent on
 color solarized
 set background=dark
@@ -52,6 +57,7 @@ syntax on
 filetype on
 au BufNewFile,BufRead *.c0,*.h0 set filetype=c
 au BufNewFile,BufRead *.cm,*.sig,*.lex set filetype=sml
+au BufNewFile,BufRead *.less set filetype=css
 filetype plugin on           " plugins are enabled
 filetype indent on           " indentation is enabled
 set ofu=syntaxcomplete#Complete
@@ -195,3 +201,14 @@ let g:syntastic_mode_map={ 'mode': 'active',
 au BufEnter /private/tmp/crontab.* setl backupcopy=yes
 
 highlight ExtraWhitespace ctermbg=red guibg=red
+
+"Note: This option must set it in .vimrc(_vimrc).  NOT IN .gvimrc(_gvimrc)!
+" Disable AutoComplPop.
+let g:acp_enableAtStartup = 0
+" Use neocomplcache.
+let g:neocomplcache_enable_at_startup = 1
+" Use smartcase.
+let g:neocomplcache_enable_smart_case = 1
+" Set minimum syntax keyword length.
+let g:neocomplcache_min_syntax_length = 3
+let g:neocomplcache_lock_buffer_name_pattern = '\*ku\*'
