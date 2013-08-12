@@ -5,7 +5,7 @@ Host shark
         User donaldh
         HostName shark.ics.cs.cmu.edu
 Host bitbucket.org
-        IdentityFile ~/.ssh/id_rsa
+        IdentityFile ~/.ssh/id_rsa.pub
 Host linode
         User don
         HostName 50.116.54.133

@@ -70,6 +70,7 @@ let vimclojure#ParenRainbow=1
 let g:Tex_DefaultTargetFormat = "pdf"
 au BufNewFile,BufRead *.html,*.js set textwidth=0
 au BufNewFile,BufRead *.S set filetype=ia64
+cnoremap w!! w !sudo tee % >/dev/null
 set wmh=0
 set wmw=0
 cabbrev Q quit!
