@@ -5,7 +5,10 @@ call vundle#rc()
 Bundle 'gmarik/vundle'
 " Bundle!
 " Bundle 'mattn/emmet-vim'
+" Bundle 'scrooloose/nerdcommenter'
+Bundle 'scrooloose/nerdtree'
 Bundle 'tpope/vim-fugitive'
+Bundle 'tpope/vim-eunuch'
 Bundle 'scrooloose/syntastic'
 Bundle 'tpope/vim-repeat'
 Bundle 'tpope/vim-surround'
