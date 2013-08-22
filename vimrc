@@ -15,6 +15,7 @@ Bundle 'tpope/vim-surround'
 Bundle 'tpope/vim-unimpaired'
 Bundle 'tpope/vim-endwise'
 Bundle 'Shougo/neocomplcache'
+Bundle 'Shougo/vimproc'
 " Bundle 'mileszs/ack'
 " Bundle 'msanders/snipmate.vim'
 Bundle 'gerw/vim-latex-suite'
@@ -29,6 +30,9 @@ Bundle 'vim-scripts/vimwiki'
 Bundle 'vim-scripts/closetag.vim'
 Bundle 'tpope/vim-commentary'
 Bundle 'kchmck/vim-coffee-script'
+Bundle 'lukerandall/haskellmode-vim'
+Bundle 'eagletmt/ghcmod-vim'
+Bundle 'ujihisa/neco-ghc'
 
 " call pathogen#infect()
 " possible tips: http://statico.github.com/vim.html
