@@ -127,4 +127,4 @@ export PYTHONPATH=/usr/local/lib/python2.7/site-packages:$PYTHONPATH
 export PYTHONPATH=$PYTHONPATH:/Users/donhuang/Dropbox/Documents/projects/hackprinceton13/aubio/python/build/lib.macosx-10.8-intel-2.7:/Users/donhuang/Dropbox/Documents/projects/hackprinceton13/aubio/python/tests
 export LD_LIBRARY_PATH=$HOME/Documents/projects/hackprinceton13/aubio/build/src
 export DYLD_LIBRARY_PATH=$HOME/Documents/projects/hackprinceton13/aubio/build/src
-export PATH=$PATH:/usr/local/share/npm/bin:~/bin:$HOME/Library/Haskell/bin
+export PATH=$PATH:/usr/local/share/npm/bin:~/bin:$HOME/Library/Haskell/bin:$HOME/.cabal/bin

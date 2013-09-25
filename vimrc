@@ -1,6 +1,7 @@
 set nocp
 filetype off
 set rtp+=~/.vim/bundle/vundle/
+let $PATH = $PATH . ':' . expand("~/.cabal/bin")
 call vundle#rc()
 Bundle 'gmarik/vundle'
 " Bundle!
@@ -30,7 +31,7 @@ Bundle 'vim-scripts/vimwiki'
 Bundle 'vim-scripts/closetag.vim'
 Bundle 'tpope/vim-commentary'
 Bundle 'kchmck/vim-coffee-script'
-Bundle 'lukerandall/haskellmode-vim'
+" Bundle 'lukerandall/haskellmode-vim'
 Bundle 'eagletmt/ghcmod-vim'
 Bundle 'ujihisa/neco-ghc'
 
@@ -221,3 +222,4 @@ let g:neocomplcache_enable_smart_case = 1
 " Set minimum syntax keyword length.
 let g:neocomplcache_min_syntax_length = 3
 let g:neocomplcache_lock_buffer_name_pattern = '\*ku\*'
+let g:necoghc_enable_detailed_browse = 1
