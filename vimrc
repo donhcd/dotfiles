@@ -1,6 +1,7 @@
 set nocp
 filetype off
 set rtp+=~/.vim/bundle/vundle/
+set rtp+=$GOROOT/misc/vim
 let $PATH = $PATH . ':' . expand("~/.cabal/bin")
 call vundle#rc()
 Bundle 'gmarik/vundle'

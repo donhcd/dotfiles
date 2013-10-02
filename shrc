@@ -128,3 +128,4 @@ export PYTHONPATH=$PYTHONPATH:/Users/donhuang/Dropbox/Documents/projects/hackpri
 export LD_LIBRARY_PATH=$HOME/Documents/projects/hackprinceton13/aubio/build/src
 export DYLD_LIBRARY_PATH=$HOME/Documents/projects/hackprinceton13/aubio/build/src
 export PATH=$PATH:/usr/local/share/npm/bin:~/bin:$HOME/Library/Haskell/bin:$HOME/.cabal/bin
+export GOROOT=/usr/local/Cellar/go/1.1.2/libexec
