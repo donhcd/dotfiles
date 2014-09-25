@@ -4,6 +4,7 @@ set rtp+=~/.vim/bundle/vundle/
 set rtp+=$GOROOT/misc/vim
 let $PATH = $PATH . ':' . expand("~/.cabal/bin")
 call vundle#rc()
+let g:solarized_termcolors=256
 Bundle 'gmarik/vundle'
 " Bundle!
 " Bundle 'mattn/emmet-vim'
@@ -125,7 +126,7 @@ set clipboard=unnamed
 "
 "ctags stuff
 nmap ,t :!(cd %:p:h;ctags *.[ch])&
-set tags=./tags,tags,~/project/tags
+set tags=./tags
 let Tlist_Ctags_Cmd = system('which ctags')
 let Tlist_Ctags_Cmd = strpart(Tlist_Ctags_Cmd, 0, strlen(Tlist_Ctags_Cmd)-1)
 let Tlist_Inc_Winwidth = 0
@@ -135,13 +136,11 @@ map <F4> :TlistToggle
 helptags ~/.vim/doc
 
 nmap ,t :!(cd %:p:h;ctags *.[ch])&
-"set tags=./tags,tags
 
 set ls=2                    " Always show status bar
 set ruler                   " Always show cursor position
 
 ",~/project/tags
-"set tags=./tags,./../tags,./../../tags,./../../../tags,tags
 
 " let Tlist_Ctags_Cmd = "/usr/bin/ctags"
 " let Tlist_WinWidth = 50
