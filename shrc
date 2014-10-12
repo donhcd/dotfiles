@@ -97,29 +97,24 @@ alias grhh="git reset --hard HEAD"
 alias gsf="git svn fetch; git svn rebase; arc build"
 alias glm="git log --author=$USER"
 
-export PATH=$HOME/local/bin:/Users/donhuang/devtools/arcanist/bin:/opt/local/bin:/opt/local/sbin:/Applications/XAMPP/xamppfiles/bin:/usr/local/bin:/usr/local/go/bin/:$PATH
+# export PATH=$HOME/local/bin:/Users/donhuang/devtools/arcanist/bin:/opt/local/bin:/opt/local/sbin:/Applications/XAMPP/xamppfiles/bin:/usr/local/bin:/usr/local/go/bin/:$PATH
+export PATH=$HOME/local/bin:/opt/local/bin:/opt/local/sbin:/usr/local/bin:/usr/local/go/bin/:$PATH
 export PATH="/usr/local/opt/coreutils/libexec/gnubin:$PATH"
 export MANPATH="/usr/local/opt/coreutils/libexec/gnuman:$MANPATH"
 
-# Added via '/Users/donhuang/android-scripts/Installers/Install Android SDK.command' at Mon Jul  9 11:02:59 PDT 2012
-export ANDROID_SDK_HOME='/Users/donhuang/local/Android/android-sdk-macosx'
-export PATH="$ANDROID_SDK_HOME/tools:$PATH"
-export PATH="$ANDROID_SDK_HOME/platform-tools:$PATH"
-# Mon Jul  9 11:02:59 PDT 2012
+# export NDK_MODULE_PATH='/Users/donhuang/local/Android/android-ndk-r8'
+# export PATH="$NDK_MODULE_PATH:$PATH"
+# export PATH="$HOME/.local/bin:$PATH"
+# export PATH="$HOME/Library/Haskell/bin:$PATH"
 
-export NDK_MODULE_PATH='/Users/donhuang/local/Android/android-ndk-r8'
-export PATH="$NDK_MODULE_PATH:$PATH"
-export PATH="$HOME/.local/bin:$PATH"
-export PATH="$HOME/Library/Haskell/bin:$PATH"
-
-PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
+# PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
 
 echo -e "$(fortune -e -s | fmt -80 -s | cowsay -$(shuf -n 1 -e b d g p s t w y) -f $(shuf -n 1 -e $(cowsay -l | tail -n +2)) -n)\n"
 
 # arcanist/libphutil
 # git clone git://github.com/facebook/libphutil.git
 # git clone git://github.com/facebook/arcanist.git
-export PATH="$HOME/local/arcanist/bin:$PATH"
+# export PATH="$HOME/local/arcanist/bin:$PATH"
 #source $HOME/local/arcanist/resources/shell/bash-completion
 
 # hackprinceton stuff
