@@ -125,7 +125,7 @@ echo -e "$(fortune -e -s | fmt -80 -s | cowsay -$(shuf -n 1 -e b d g p s t w y) 
 #export PATH=$PATH:/usr/local/share/npm/bin:~/bin:$HOME/Library/Haskell/bin:$HOME/.cabal/bin
 export GOROOT=/usr/local/go
 
-which boot2docker &>2 /dev/null && docker-enter() {
+which boot2docker > /dev/null 2>&1 && docker-enter() {
     boot2docker ssh '[ -f /var/lib/boot2docker/nsenter ] || docker run --rm -v /var/lib/boot2docker/:/target jpetazzo/nsenter'
       boot2docker ssh -t sudo /var/lib/boot2docker/docker-enter "$@"
 } || true
