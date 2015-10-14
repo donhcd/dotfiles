@@ -1,7 +1,8 @@
 set nocp
 filetype off
+syntax off
 set rtp+=~/.vim/bundle/vundle/
-set rtp+=$GOROOT/misc/vim
+" set rtp+=$GOROOT/misc/vim
 let $PATH = $PATH . ':' . expand("~/.cabal/bin")
 call vundle#rc()
 let g:solarized_termcolors=256
@@ -12,23 +13,25 @@ Bundle 'gmarik/vundle'
 Bundle 'scrooloose/nerdtree'
 Bundle 'tpope/vim-fugitive'
 Bundle 'tpope/vim-eunuch'
-Bundle 'scrooloose/syntastic'
+" Bundle 'scrooloose/syntastic'
 Bundle 'tpope/vim-repeat'
 Bundle 'tpope/vim-surround'
 Bundle 'tpope/vim-unimpaired'
 Bundle 'tpope/vim-endwise'
-Bundle 'Shougo/neocomplcache'
+" Bundle 'Shougo/neocomplcache'
 Bundle 'Shougo/vimproc'
 Bundle 'fatih/vim-go'
+" Bundle 'dgryski/vim-godef'
 " Bundle 'mileszs/ack'
 " Bundle 'msanders/snipmate.vim'
 Bundle 'gerw/vim-latex-suite'
-Bundle 'vim-scripts/taglist.vim'
+" Bundle 'vim-scripts/taglist.vim'
 Bundle 'kien/ctrlp.vim'
 Bundle 'walm/jshint.vim'
 Bundle 'altercation/vim-colors-solarized'
 Bundle 'vim-scripts/matchit.zip'
 Bundle 'pangloss/vim-javascript'
+Bundle 'mxw/vim-jsx'
 Bundle 'tpope/vim-rails'
 Bundle 'vim-scripts/vimwiki'
 Bundle 'vim-scripts/closetag.vim'
@@ -37,6 +40,8 @@ Bundle 'kchmck/vim-coffee-script'
 " Bundle 'lukerandall/haskellmode-vim'
 Bundle 'eagletmt/ghcmod-vim'
 Bundle 'ujihisa/neco-ghc'
+" Bundle 'nsf/gocode', {'rtp': 'vim/'}
+Bundle 'majutsushi/tagbar'
 
 " call pathogen#infect()
 " possible tips: http://statico.github.com/vim.html
@@ -217,10 +222,43 @@ highlight ExtraWhitespace ctermbg=red guibg=red
 " Disable AutoComplPop.
 let g:acp_enableAtStartup = 0
 " Use neocomplcache.
-let g:neocomplcache_enable_at_startup = 1
+" let g:neocomplcache_enable_at_startup = 1
 " Use smartcase.
-let g:neocomplcache_enable_smart_case = 1
+" let g:neocomplcache_enable_smart_case = 1
 " Set minimum syntax keyword length.
-let g:neocomplcache_min_syntax_length = 3
-let g:neocomplcache_lock_buffer_name_pattern = '\*ku\*'
+" let g:neocomplcache_min_syntax_length = 3
+" let g:neocomplcache_lock_buffer_name_pattern = '\*ku\*'
 let g:necoghc_enable_detailed_browse = 1
+
+" let g:tagbar_type_go = {
+"     \ 'ctagstype' : 'go',
+"     \ 'kinds'     : [
+"         \ 'p:package',
+"         \ 'i:imports:1',
+"         \ 'c:constants',
+"         \ 'v:variables',
+"         \ 't:types',
+"         \ 'n:interfaces',
+"         \ 'w:fields',
+"         \ 'e:embedded',
+"         \ 'm:methods',
+"         \ 'r:constructor',
+"         \ 'f:functions'
+"     \ ],
+"     \ 'sro' : '.',
+"     \ 'kind2scope' : {
+"         \ 't' : 'ctype',
+"         \ 'n' : 'ntype'
+"     \ },
+"     \ 'scope2kind' : {
+"         \ 'ctype' : 't',
+"         \ 'ntype' : 'n'
+"     \ },
+"     \ 'ctagsbin'  : 'gotags',
+"     \ 'ctagsargs' : '-sort -silent'
+" \ }
+
+" nmap <F8> :TagbarToggle<CR>
+
+let g:godef_split=0
+let g:go_fmt_command='supergofmt'
