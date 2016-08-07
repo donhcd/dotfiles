@@ -97,7 +97,6 @@ alias grhh="git reset --hard HEAD"
 alias gsf="git svn fetch; git svn rebase; arc build"
 alias glm="git log --author=$USER"
 
-# export PATH=$HOME/local/bin:/Users/donhuang/devtools/arcanist/bin:/opt/local/bin:/opt/local/sbin:/Applications/XAMPP/xamppfiles/bin:/usr/local/bin:/usr/local/go/bin/:$PATH
 export PATH=$HOME/local/bin:/opt/local/bin:/opt/local/sbin:/usr/local/bin:/usr/local/go/bin/:$PATH
 export PATH="/usr/local/opt/coreutils/libexec/gnubin:$PATH"
 export MANPATH="/usr/local/opt/coreutils/libexec/gnuman:$MANPATH"
@@ -111,21 +110,4 @@ export MANPATH="/usr/local/opt/coreutils/libexec/gnuman:$MANPATH"
 
 echo -e "$(fortune -e -s | fmt -80 -s | cowsay -$(shuf -n 1 -e b d g p s t w y) -f $(shuf -n 1 -e $(cowsay -l | tail -n +2)) -n)\n"
 
-# arcanist/libphutil
-# git clone git://github.com/facebook/libphutil.git
-# git clone git://github.com/facebook/arcanist.git
-# export PATH="$HOME/local/arcanist/bin:$PATH"
-#source $HOME/local/arcanist/resources/shell/bash-completion
-
-# hackprinceton stuff
-#export PYTHONPATH=/usr/local/lib/python2.7/site-packages:$PYTHONPATH
-#export PYTHONPATH=$PYTHONPATH:/Users/donhuang/Dropbox/Documents/projects/hackprinceton13/aubio/python/build/lib.macosx-10.8-intel-2.7:/Users/donhuang/Dropbox/Documents/projects/hackprinceton13/aubio/python/tests
-#export LD_LIBRARY_PATH=$HOME/Documents/projects/hackprinceton13/aubio/build/src
-#export DYLD_LIBRARY_PATH=$HOME/Documents/projects/hackprinceton13/aubio/build/src
-#export PATH=$PATH:/usr/local/share/npm/bin:~/bin:$HOME/Library/Haskell/bin:$HOME/.cabal/bin
-export GOROOT=/usr/local/go
-
-which boot2docker > /dev/null 2>&1 && docker-enter() {
-    boot2docker ssh '[ -f /var/lib/boot2docker/nsenter ] || docker run --rm -v /var/lib/boot2docker/:/target jpetazzo/nsenter'
-      boot2docker ssh -t sudo /var/lib/boot2docker/docker-enter "$@"
-} || true
+export GOROOT=/usr/local/Cellar/go/1.1.2/libexec
