@@ -16,6 +16,7 @@
         editor = vim
         whitespace = trailing-space,space-before-tab
 	excludesfile = ~/.gitignore
+	trustctime = false
 [apply]
         whitespace = fix
 [alias]
