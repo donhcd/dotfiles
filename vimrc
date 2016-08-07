@@ -47,6 +47,7 @@ Bundle 'majutsushi/tagbar'
 " possible tips: http://statico.github.com/vim.html
 
 let g:neocomplcache_enable_at_startup = 1
+let g:syntastic_always_populate_loc_list = 1
 filetype plugin indent on
 color solarized
 set background=dark
@@ -92,6 +93,8 @@ set wmh=0
 set wmw=0
 cabbrev Q quit!
 cabbrev W write
+set ignorecase
+set smartcase
 
 " IMPORTANT: grep will sometimes skip displaying the file name if you
 " search in a singe file. This will confuse Latex-Suite. Set your grep
@@ -181,7 +184,8 @@ endfun
 
 autocmd FileType c,cpp,java,php,sml,tex autocmd BufWritePre <buffer> :%s/\s\+$//e
 
-let g:ctrlp_map='<leader>t'
+nm <leader>t :CtrlP .<cr>
+" let g:ctrlp_map='<leader>t'
 
 " django stuff
 let s:selectregexs={
@@ -262,3 +266,4 @@ let g:necoghc_enable_detailed_browse = 1
 
 let g:godef_split=0
 let g:go_fmt_command='supergofmt'
+set wildignore+=*/bin/*,*/dist/*,*/build/*,*/shellbins/*
