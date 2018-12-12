@@ -44,3 +44,12 @@ LSCOLORS=DxGxcxdxCxcgcdabagacad
 export CLICOLOR LSCOLORS
 
 ulimit -n 1024
+
+export DEP_OPENSSL_INCLUDE=/usr/local/opt/openssl/include
+
+# added by travis gem
+[ -f /Users/don/.travis/travis.sh ] && source /Users/don/.travis/travis.sh
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion

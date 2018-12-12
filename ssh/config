@@ -10,3 +10,5 @@ Host linode
         User don
         HostName 50.116.54.133
         Port 476
+Host *
+        UseKeychain yes

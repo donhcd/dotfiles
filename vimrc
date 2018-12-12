@@ -4,11 +4,13 @@ syntax off
 set rtp+=~/.vim/bundle/vundle/
 " set rtp+=$GOROOT/misc/vim
 let $PATH = $PATH . ':' . expand("~/.cabal/bin")
+" let g:ale_emit_conflict_warnings = 0
 call vundle#rc()
 let g:solarized_termcolors=256
 Bundle 'gmarik/vundle'
 " Bundle!
 " Bundle 'mattn/emmet-vim'
+Bundle 'mattn/webapi-vim'
 " Bundle 'scrooloose/nerdcommenter'
 Bundle 'scrooloose/nerdtree'
 Bundle 'tpope/vim-fugitive'
@@ -18,6 +20,7 @@ Bundle 'tpope/vim-repeat'
 Bundle 'tpope/vim-surround'
 Bundle 'tpope/vim-unimpaired'
 Bundle 'tpope/vim-endwise'
+Bundle 'tpope/vim-obsession'
 " Bundle 'Shougo/neocomplcache'
 Bundle 'Shougo/vimproc'
 Bundle 'fatih/vim-go'
@@ -27,11 +30,12 @@ Bundle 'fatih/vim-go'
 Bundle 'gerw/vim-latex-suite'
 " Bundle 'vim-scripts/taglist.vim'
 Bundle 'kien/ctrlp.vim'
-Bundle 'walm/jshint.vim'
+Bundle 'mileszs/ack.vim'
+" Bundle 'walm/jshint.vim'
 Bundle 'altercation/vim-colors-solarized'
 Bundle 'vim-scripts/matchit.zip'
 Bundle 'pangloss/vim-javascript'
-Bundle 'mxw/vim-jsx'
+" Bundle 'mxw/vim-jsx'
 Bundle 'tpope/vim-rails'
 Bundle 'vim-scripts/vimwiki'
 Bundle 'vim-scripts/closetag.vim'
@@ -42,6 +46,45 @@ Bundle 'eagletmt/ghcmod-vim'
 Bundle 'ujihisa/neco-ghc'
 " Bundle 'nsf/gocode', {'rtp': 'vim/'}
 Bundle 'majutsushi/tagbar'
+Bundle 'rust-lang/rust.vim'
+Bundle 'Valloric/YouCompleteMe'
+Bundle 'racer-rust/vim-racer'
+Bundle 'tpope/vim-rhubarb'
+" Bundle 'othree/yajs.vim'
+" Bundle 'othree/es.next.syntax.vim'
+Bundle 'flowtype/vim-flow'
+Bundle 'w0rp/ale'
+
+
+" vim-flow type checking is slow AF
+let g:flow#enable = 0
+let g:flow#autoclose = 1
+let g:flow#timeout = 5
+" Use locally installed flow
+let local_flow = finddir('node_modules', '.;') . '/.bin/flow'
+if matchstr(local_flow, "^\/\\w") == ''
+    let local_flow= getcwd() . "/" . local_flow
+endif
+if executable(local_flow)
+  let g:flow#flowpath = local_flow
+endif
+
+" let local_eslint = finddir('node_modules', '.;') . '/.bin/eslint'
+" if matchstr(local_eslint, "^\/\\w") == ''
+"     let local_eslint= getcwd() . "/" . local_eslint
+" endif
+" if executable(local_eslint)
+"   let g:ale_javascript_eslint_executable = local_eslint
+" endif
+
+au FileType javascript nm gd :FlowJumpToDef<CR>
+au FileType javascript nm gs :split<CR>:FlowJumpToDef<CR>
+au FileType javascript nm gx :vsplit<CR>:FlowJumpToDef<CR>
+
+
+let g:ycm_filetype_specific_completion_to_disable = {
+\ 'javascript': 1
+\}
 
 " call pathogen#infect()
 " possible tips: http://statico.github.com/vim.html
@@ -71,8 +114,6 @@ set vb t_vb=
 set textwidth=80
 set undofile
 set undodir=~/.vimundos
-syntax on
-filetype on
 au BufNewFile,BufRead *.c0,*.h0 set filetype=c
 au BufNewFile,BufRead *.cm,*.sig,*.lex set filetype=sml
 au BufNewFile,BufRead *.less set filetype=css
@@ -141,6 +182,7 @@ let Tlist_Ctags_Cmd = strpart(Tlist_Ctags_Cmd, 0, strlen(Tlist_Ctags_Cmd)-1)
 let Tlist_Inc_Winwidth = 0
 "let Tlist_WinWidth = 50
 map <F4> :TlistToggle
+set wildignore+=deps,target,node_modules
 
 helptags ~/.vim/doc
 
@@ -267,3 +309,56 @@ let g:necoghc_enable_detailed_browse = 1
 let g:godef_split=0
 let g:go_fmt_command='supergofmt'
 set wildignore+=*/bin/*,*/dist/*,*/build/*,*/shellbins/*
+
+set hidden
+let g:racer_cmd = expand("~/.cargo/bin/racer")
+" rustc --print sysroot
+let $RUST_SRC_PATH = expand("~/.rustup/toolchains/nightly-x86_64-apple-darwin/lib/rustlib/src/rust/src")
+let g:ycm_rust_src_path = expand("~/.rustup/toolchains/nightly-x86_64-apple-darwin/lib/rustlib/src/rust/src")
+let $CARGO_HOME = expand("~/.cargo")
+let g:racer_experimental_completer = 1
+
+let g:rustfmt_autosave=1
+au FileType rust nmap gd <Plug>(rust-def)
+au FileType rust nmap gs <Plug>(rust-def-split)
+au FileType rust nmap gx <Plug>(rust-def-vertical)
+au FileType rust nmap <leader>gd <Plug>(rust-doc)
+
+
+" this makes syntax highlighting work with flow??
+let g:javascript_plugin_flow = 1
+let g:ale_linters = {
+\  'javascript': ['eslint', 'flow-language-server'],
+\}
+let g:ale_fixers = {
+\  'javascript': ['eslint'],
+\  'python': ['autopep8'],
+\}
+highlight clear ALEErrorSign " otherwise uses error bg color (typically red)
+highlight clear ALEWarningSign " otherwise uses error bg color (typically red)
+" let g:ale_sign_error = 'X' " could use emoji
+" let g:ale_sign_warning = '?' " could use emoji
+" let g:ale_statusline_format = ['X %d', '? %d', '']
+" %linter% is the name of the linter that provided the message
+" %s is the error or warning message
+let g:ale_echo_msg_format = '%linter% says %s'
+let g:ale_fix_on_save = 1
+" let g:ale_fix_buffer_data = {
+"       \'1': {'done': 1,'should_save':1,'changes_made':0}
+"       \}
+" Map keys to navigate between lines with errors and warnings.
+augroup vimrc
+   au!
+   " au VimEnter * unmap <C-j>
+   au VimEnter * nnoremap <C-j> :ALENextWrap<cr>
+augroup END
+nnoremap <C-K> :ALEPreviousWrap<cr>
+" nnoremap <C-J> :ALENextWrap<cr>
+
+if executable('rg')
+  let g:ackprg = 'rg --vimgrep'
+endif
+autocmd!
+
+syntax on
+filetype on

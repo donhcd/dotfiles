@@ -49,12 +49,18 @@ alias sd="svn diff"
 alias g='git'
 alias ga="git add"
 alias gap="ga -p"
+alias gmpr="git pull-request"
 alias gpr="git pull --rebase"
+alias gprom="git pull --rebase origin master"
+alias gpoh="git push origin HEAD"
+alias gpohf="git push -f origin HEAD"
 alias gl="git log"
 alias grc='git rebase --continue'
 alias gra='git rebase --abort'
+alias grs='git rebase --skip'
+alias grom='git rebase -i origin/master'
 
-alias gd="git diff"
+alias gd="git dsf"
 alias gdh="gd HEAD"
 alias gdhu="gdh -U9999"
 alias gdm="gd master"
@@ -89,7 +95,10 @@ alias gci="git commit -i"
 alias gca="git commit -a"
 alias gcam="git commit -a -m"
 alias gcaa="git commit -a --amend"
-alias gcamw="git commit -a -m working"
+alias gcaan="git commit -a --amend --no-edit"
+# alias gcamw="git commit -a -m working"
+alias gcamw="git now"
+alias gn="git now"
 
 alias gms="git merge --squash"
 alias grh="git reset --hard"
@@ -99,7 +108,11 @@ alias glm="git log --author=$USER"
 
 export PATH=$HOME/local/bin:/opt/local/bin:/opt/local/sbin:/usr/local/bin:/usr/local/go/bin/:$PATH
 export PATH="/usr/local/opt/coreutils/libexec/gnubin:$PATH"
+
+export PATH="$HOME/local/bin:/opt/local/bin:/opt/local/sbin:/usr/local/bin:/usr/local/go/bin/:/usr/local/opt/coreutils/libexec/gnubin:$HOME/Downloads/google-cloud-sdk/bin/:$PATH"
 export MANPATH="/usr/local/opt/coreutils/libexec/gnuman:$MANPATH"
+
+export PATH="/Users/don/src/rust/emsdk_portable:/Users/don/src/rust/emsdk_portable/clang/fastcomp/build_incoming_64/bin:/Users/don/src/rust/emsdk_portable/node/4.1.1_64bit/bin:/Users/don/src/rust/emsdk_portable/emscripten/incoming:$PATH"
 
 # export NDK_MODULE_PATH='/Users/donhuang/local/Android/android-ndk-r8'
 # export PATH="$NDK_MODULE_PATH:$PATH"
@@ -108,6 +121,40 @@ export MANPATH="/usr/local/opt/coreutils/libexec/gnuman:$MANPATH"
 
 # PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
 
-echo -e "$(fortune -e -s | fmt -80 -s | cowsay -$(shuf -n 1 -e b d g p s t w y) -f $(shuf -n 1 -e $(cowsay -l | tail -n +2)) -n)\n"
 
-export GOROOT=/usr/local/Cellar/go/1.1.2/libexec
+# arcanist/libphutil
+# git clone git://github.com/facebook/libphutil.git
+# git clone git://github.com/facebook/arcanist.git
+# export PATH="$HOME/local/arcanist/bin:$PATH"
+#source $HOME/local/arcanist/resources/shell/bash-completion
+
+# hackprinceton stuff
+#export PYTHONPATH=/usr/local/lib/python2.7/site-packages:$PYTHONPATH
+#export PYTHONPATH=$PYTHONPATH:/Users/donhuang/Dropbox/Documents/projects/hackprinceton13/aubio/python/build/lib.macosx-10.8-intel-2.7:/Users/donhuang/Dropbox/Documents/projects/hackprinceton13/aubio/python/tests
+#export LD_LIBRARY_PATH=$HOME/Documents/projects/hackprinceton13/aubio/build/src
+#export DYLD_LIBRARY_PATH=$HOME/Documents/projects/hackprinceton13/aubio/build/src
+#export PATH=$PATH:/usr/local/share/npm/bin:~/bin:$HOME/Library/Haskell/bin:$HOME/.cabal/bin
+export GOROOT=/usr/local/opt/go/libexec
+
+which boot2docker > /dev/null 2>&1 && docker-enter() {
+    boot2docker ssh '[ -f /var/lib/boot2docker/nsenter ] || docker run --rm -v /var/lib/boot2docker/:/target jpetazzo/nsenter'
+      boot2docker ssh -t sudo /var/lib/boot2docker/docker-enter "$@"
+} || true
+
+export DEP_OPENSSL_INCLUDE=/usr/local/opt/openssl/include
+export PATH="$PATH:$HOME/.cargo/bin:$HOME/src/sigma/go/bin"
+export GOPATH=/Users/don/src/go
+
+alias encodeURIComponent='perl -pe '\''s/([^a-zA-Z0-9_.!~*()'\''\'\'''\''-])/sprintf("%%%02X",ord($1))/ge'\'
+
+# added by Snowflake SnowSQL installer v1.0
+export PATH=/Applications/SnowSQL.app/Contents/MacOS:$PATH
+# add maven to path
+export PATH=$HOME/java/apache-maven-3.5.2/bin:$PATH
+
+[ -f "$HOME/.travis/travis.sh" ] && source $HOME/.travis/travis.sh
+[ -f "$HOME/.rvm/scripts/rvm" ] && source $HOME/.rvm/scripts/rvm
+[ -f "$HOME/.rbenv/bin/rbenv" ] && source $HOME/.rbenv/bin/rbenv
+[ -f "$HOME/.iterm2_shell_integration.zsh" ] && source $HOME/.iterm2_shell_integration.zsh
+
+[ -f "$HOME/dotfiles/.local_env" ] && . $HOME/dotfiles/.local_env

@@ -1,5 +1,7 @@
 *.swp
+*.zwc
 vim/.netrwhist
 vim/bundle
 zsh/cache
 ssh/*
+.local_env

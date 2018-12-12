@@ -7,3 +7,6 @@
 [submodule "vim/bundle/vundle"]
 	path = vim/bundle/vundle
 	url = git://github.com/gmarik/vundle.git
+[submodule "vim/pack/git-plugins/start/ale"]
+	path = vim/pack/git-plugins/start/ale
+	url = git@github.com:w0rp/ale.git

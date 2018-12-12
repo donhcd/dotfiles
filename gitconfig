@@ -2,7 +2,7 @@
         ui = auto
 [user]
         name = Donald Huang
-        email = don.hcd@gmail.com
+        email = don@sigmacomputing.io
 [github]
         user = donhcd
 [diff]
@@ -11,7 +11,7 @@
 [merge]
         tool = vimdiff
 [credential]
-        helper = osxkeychain
+	helper = store
 [core]
         editor = vim
         whitespace = trailing-space,space-before-tab
@@ -20,7 +20,7 @@
 [apply]
         whitespace = fix
 [alias]
-        ci = commit
+        ci = commit -nm
         co = checkout
         bd = branch -d
         bD = branch -D
@@ -30,4 +30,6 @@
 [rerere]
         enabled = true
 [push]
-	 default = simple
+	default = simple
+[pager]
+	branch = false
