@@ -1,9 +1,6 @@
 # ~/.zshrc
 # vim:set et sw=2:
 
-module_path+=( "$HOME/.zplugin/bin/zmodules/Src" )
-zmodload zdharma/zplugin
-
 export ZSH_CACHE_DIR=$HOME/.zsh_cache
 mkdir -p $ZSH_CACHE_DIR
 
@@ -12,7 +9,7 @@ mkdir -p $ZSH_CACHE_DIR
 setopt autocd extendedglob noclobber nonomatch rcquotes
 
 setopt histexpiredupsfirst histignoredups histignorespace histreduceblanks
-setopt inc_append_history share_history
+setopt inc_append_history share_history INTERACTIVE_COMMENTS
 
 HISTSIZE=10000000
 SAVEHIST=10000000
@@ -86,37 +83,39 @@ autoload -Uz _zplugin
 (( ${+_comps} )) && _comps[zplugin]=_zplugin
 ### End of Zplugin's installer chunk
 
-zplugin ice wait'0' lucid; zplugin load zdharma/history-search-multi-word
+# for nvm plugin
+export NVM_LAZY_LOAD=true
+export NVM_AUTO_USE=true
+  
+#  zplugin ice wait'0' lucid; zplugin load zdharma/history-search-multi-word
 
 zplugin ice wait"0" lucid blockf
 zplugin ice wait'0' lucid; zplugin load zsh-users/zsh-completions
 
 zplugin ice wait"0" lucid atload"_zsh_autosuggest_start"
 zplugin ice wait'0' lucid; zplugin load zsh-users/zsh-autosuggestions
-
+#  
 zplugin snippet OMZ::lib/git.zsh
 zplugin snippet OMZ::plugins/git/git.plugin.zsh
-
-GEOMETRY_COLOR_DIR=152
-zplugin light geometry-zsh/geometry
-zplugin ice wait"0" lucid atload"prompt_geometry_render"
-
-zplugin ice wait"0" lucid as"program" pick"bin/git-dsf"
-zplugin light zdharma/zsh-diff-so-fancy
-zplugin ice wait"0" lucid as"program" pick"$ZPFX/bin/git-now" make"prefix=$ZPFX install"
-zplugin ice wait"0" lucid iwata/git-now
-zplugin ice wait"0" lucid as"program" pick"$ZPFX/bin/git-alias" make"PREFIX=$ZPFX" nocompile
+#  
+#  GEOMETRY_COLOR_DIR=152
+#  zplugin light geometry-zsh/geometry
+#  zplugin ice wait"0" lucid atload"prompt_geometry_render"
+#  
+#  zplugin ice wait"0" lucid as"program" pick"bin/git-dsf"
+#  zplugin light zdharma/zsh-diff-so-fancy
+#  zplugin ice wait"0" lucid as"program" pick"$ZPFX/bin/git-now" make"prefix=$ZPFX install"
+#  zplugin ice wait"0" lucid iwata/git-now
+#  zplugin ice wait"0" lucid as"program" pick"$ZPFX/bin/git-alias" make"PREFIX=$ZPFX" nocompile
 zplugin ice wait"0" lucid tj/git-extras
-zplugin ice wait"0" lucid as"program" atclone'perl Makefile.PL PREFIX=$ZPFX' atpull'%atclone' \
-            make'install' pick"$ZPFX/bin/git-cal"
-zplugin ice wait"0" lucid k4rthik/git-cal
-
-# throwaway call - seems like the first one gets trashed??
-zplugin ice wait"0" lucid; zplugin load denolfe/zsh-travis
-zplugin ice wait"0" lucid; zplugin load denolfe/zsh-travis
-zplugin ice wait"0" lucid svn; zplugin snippet OMZ::plugins/brew
-zplugin ice wait"0" lucid svn pick"nvm.plugin.zsh"; zplugin snippet OMZ::plugins/nvm
-zplugin ice wait"0" lucid svn; zplugin snippet OMZ::plugins/node
+#  zplugin ice wait"0" lucid as"program" atclone'perl Makefile.PL PREFIX=$ZPFX' atpull'%atclone' \
+#              make'install' pick"$ZPFX/bin/git-cal"
+#  zplugin ice wait"0" lucid k4rthik/git-cal
+#  
+#  zplugin ice wait"0" lucid svn; zplugin snippet OMZ::plugins/brew
+#  zplugin ice wait"0" lucid svn pick"nvm.plugin.zsh"; zplugin snippet OMZ::plugins/nvm
+zplugin light lukechilds/zsh-nvm
+#  zplugin ice wait"0" lucid svn; zplugin snippet OMZ::plugins/node
 zplugin ice wait"0" lucid svn; zplugin snippet OMZ::plugins/tmuxinator
 
 zplugin ice wait"0" lucid svn; zplugin snippet OMZ::plugins/kubectl
@@ -131,3 +130,5 @@ interactive=1
 unset interactive
 
 echo -e "$(fortune -e -s | fmt -80 -s | cowsay -$(shuf -n 1 -e b d g p s t w y) -f $(shuf -n 1 -e $(cowsay -l | tail -n +2)) -n)\n"
+
+eval "$(starship init zsh)"
