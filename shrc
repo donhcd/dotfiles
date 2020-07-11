@@ -6,6 +6,7 @@ export TERM=screen-256color
 # unix nav
 alias ..='cd ..'
 alias ...='cd ../..'
+alias n='. $NVM_DIR/nvm.sh && nvm use'
 alias ls="ls -G"
 alias ll="ls -l"
 alias la='ls -al'
@@ -39,11 +40,6 @@ alias vb="v ~/.bashrc"
 alias sb=". ~/.bashrc"
 alias vbp="v ~/.bash_profile"
 alias sbp=". ~/.bash_profile"
-# svn
-alias sup="svn up"
-alias st="svn stat"
-alias stq="svn stat -q"
-alias sd="svn diff"
 
 #git
 alias g='git'
@@ -60,7 +56,7 @@ alias gra='git rebase --abort'
 alias grs='git rebase --skip'
 alias grom='git rebase -i origin/master'
 
-alias gd="git dsf"
+alias gd="git diff"
 alias gdh="gd HEAD"
 alias gdhu="gdh -U9999"
 alias gdm="gd master"
@@ -109,7 +105,7 @@ alias glm="git log --author=$USER"
 export PATH=$HOME/local/bin:/opt/local/bin:/opt/local/sbin:/usr/local/bin:/usr/local/go/bin/:$PATH
 export PATH="/usr/local/opt/coreutils/libexec/gnubin:$PATH"
 
-export PATH="$HOME/local/bin:/opt/local/bin:/opt/local/sbin:/usr/local/bin:/usr/local/go/bin/:/usr/local/opt/coreutils/libexec/gnubin:$HOME/Downloads/google-cloud-sdk/bin/:$PATH"
+export PATH="$HOME/local/bin:/opt/local/bin:/opt/local/sbin:/usr/local/bin:/usr/local/go/bin/:$HOME/local/google-cloud-sdk/bin/:$PATH"
 export MANPATH="/usr/local/opt/coreutils/libexec/gnuman:$MANPATH"
 
 export PATH="/Users/don/src/rust/emsdk_portable:/Users/don/src/rust/emsdk_portable/clang/fastcomp/build_incoming_64/bin:/Users/don/src/rust/emsdk_portable/node/4.1.1_64bit/bin:/Users/don/src/rust/emsdk_portable/emscripten/incoming:$PATH"
@@ -134,7 +130,7 @@ export PATH="/Users/don/src/rust/emsdk_portable:/Users/don/src/rust/emsdk_portab
 #export LD_LIBRARY_PATH=$HOME/Documents/projects/hackprinceton13/aubio/build/src
 #export DYLD_LIBRARY_PATH=$HOME/Documents/projects/hackprinceton13/aubio/build/src
 #export PATH=$PATH:/usr/local/share/npm/bin:~/bin:$HOME/Library/Haskell/bin:$HOME/.cabal/bin
-export GOROOT=/usr/local/opt/go/libexec
+export GOROOT=
 
 which boot2docker > /dev/null 2>&1 && docker-enter() {
     boot2docker ssh '[ -f /var/lib/boot2docker/nsenter ] || docker run --rm -v /var/lib/boot2docker/:/target jpetazzo/nsenter'
@@ -144,17 +140,40 @@ which boot2docker > /dev/null 2>&1 && docker-enter() {
 export DEP_OPENSSL_INCLUDE=/usr/local/opt/openssl/include
 export PATH="$PATH:$HOME/.cargo/bin:$HOME/src/sigma/go/bin"
 export GOPATH=/Users/don/src/go
+export PATH=$GOPATH/bin:$PATH
 
 alias encodeURIComponent='perl -pe '\''s/([^a-zA-Z0-9_.!~*()'\''\'\'''\''-])/sprintf("%%%02X",ord($1))/ge'\'
 
-# added by Snowflake SnowSQL installer v1.0
-export PATH=/Applications/SnowSQL.app/Contents/MacOS:$PATH
-# add maven to path
-export PATH=$HOME/java/apache-maven-3.5.2/bin:$PATH
-
-[ -f "$HOME/.travis/travis.sh" ] && source $HOME/.travis/travis.sh
-[ -f "$HOME/.rvm/scripts/rvm" ] && source $HOME/.rvm/scripts/rvm
-[ -f "$HOME/.rbenv/bin/rbenv" ] && source $HOME/.rbenv/bin/rbenv
-[ -f "$HOME/.iterm2_shell_integration.zsh" ] && source $HOME/.iterm2_shell_integration.zsh
-
+export PATH=/usr/local/opt/coreutils/libexec/gnubin:$PATH
 [ -f "$HOME/dotfiles/.local_env" ] && . $HOME/dotfiles/.local_env
+
+export NVM_DIR="$HOME/.nvm"
+
+_has() {
+  return $( whence $1 &>/dev/null )
+}
+
+# fzf
+# fzf via Homebrew
+if [ -e /usr/local/opt/fzf/shell/completion.zsh ]; then
+  source /usr/local/opt/fzf/shell/key-bindings.zsh
+  source /usr/local/opt/fzf/shell/completion.zsh
+fi
+
+# fzf via local installation
+if [ -e ~/.fzf ]; then
+  _append_to_path ~/.fzf/bin
+  source ~/.fzf/shell/key-bindings.zsh
+  source ~/.fzf/shell/completion.zsh
+fi
+
+# fzf + rg configuration
+if _has fzf && _has ag; then
+  export FZF_DEFAULT_COMMAND='rg --nocolor -g ""'
+  export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
+  export FZF_ALT_C_COMMAND="$FZF_DEFAULT_COMMAND"
+  export FZF_DEFAULT_OPTS='
+  --color fg:242,bg:236,hl:65,fg+:15,bg+:239,hl+:108
+  --color info:108,prompt:109,spinner:108,pointer:168,marker:168
+  '
+fi
